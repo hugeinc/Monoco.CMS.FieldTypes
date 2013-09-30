@@ -1,0 +1,47 @@
+# Set default behaviour, in case users don't have core.autocrlf set.
+* text=auto
+
+*.bmp binary
+*.dll binary
+*.gif binary
+*.jpg binary
+*.png binary
+*.snk binary
+
+*.aspx text
+*.ascx text
+*.cd text
+*.cmd text
+*.coffee text eol=lf
+*.config text
+*.cs text diff=csharp 
+*.csproj text merge=union 
+*.cshtml text
+*.css text eol=lf
+*.dtd text
+*.edmx text
+*.htm text
+*.html text
+*.item -text
+*.js text eol=lf
+*.json text
+*.less text eol=lf
+*.msbuild text
+*.nuspec text
+*.rb text eol=lf
+*.resx text
+*.ruleset text
+*.scss text eol=lf
+*.StyleCop text
+*.targets text
+*.tt text
+*.txt text
+*.vb text
+*.vbhtml text
+*.vbproj text merge=union 
+*.vbs text
+*.wsf text
+*.xml text
+*.xunit text
+
+*.sln text eol=crlf merge=union 

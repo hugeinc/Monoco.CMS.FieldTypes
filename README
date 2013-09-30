@@ -1,1 +1,15 @@
 Sitecore LinkList Field Type.
+========
+
+## Updates
+
+This project has been updated to build with Sitecore 7 and .NET 4.5
+
+#### Additions
+
+- Link now has a LinkFieldType enum property for External/Media/Internal
+- Link now has 
+
+#### Glass Mapper Integration
+
+Guaranteed to work for Glass.Mapper.Sc 3.0.5.14
