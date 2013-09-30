@@ -118,7 +118,7 @@ namespace Monoco.CMS.Fields
                                 ? Sitecore.Configuration.Settings.Media.RequestExtension
                                 : path.Substring(path.LastIndexOf(".")).Substring(1);
 
-                            return string.Format("{0}/{1}.{2}", linkPrefix, mediaItem.ID.Guid.ToString("N"), requestExtension);
+                            return string.Format("{0}{1}.{2}", linkPrefix, mediaItem.ID.Guid.ToString("N"), requestExtension);
                         }
                     }
                     return String.Empty;
