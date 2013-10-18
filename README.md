@@ -17,3 +17,8 @@ In GlassMapperScCustom.cs add the following to the CastleConfig method.
     container.Register(
       Component.For<AbstractDataMapper>().ImplementedBy<LinkListDataHandler>().LifeStyle.Transient
     );
+    
+#### Multiple assemblies
+
+If you have your models in a seperate assembly than your web project, take a look at this link for further details:
+http://glass.lu/docs/tutorial/sitecore/tutorial20/tutorial20.html
