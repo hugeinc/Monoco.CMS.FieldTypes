@@ -37,6 +37,10 @@ namespace Monoco.CMS.Fields
                                     Title = GetElementAttribute(link, "text"),
                                     LinkType = GetElementAttribute(link, "linktype"),
                                     LinkFieldType = GetLinkFieldType(link, "linktype"),
+                                    AltTitle = GetElementAttribute(link, "title"),
+                                    Anchor = GetElementAttribute(link, "anchor"),
+                                    Class = GetElementAttribute(link, "class"),
+                                    QueryString = GetElementAttribute(link, "querystring"),
                                     Url = GetUrlFromLink(link),
                                     DynamicLinkUrl = GetDynamicLinkUrlFromLink(link),
                                 };
@@ -123,7 +127,7 @@ namespace Monoco.CMS.Fields
                     }
                     return String.Empty;
                 default: // all other links are considered external.
-                    return GetElementAttribute(link, "url");
+                    return GetUrlFromLink(link);
             }
         }
 
