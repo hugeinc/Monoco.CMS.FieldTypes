@@ -412,10 +412,13 @@ namespace Monoco.CMS.FieldTypes
         /// <returns></returns>
         private string GetSelectText(XmlNode node)
         {
+            var linkType = GetLinkType(node);
+            var linkUrl = (linkType != null && linkType.ToString() == "internal") ? GetLinkPath(node) : GetLinkUrl(node);
+
             return string.Format("{0} ({1}: {2})",
                 GetAttribute(node, "text"), 
-                GetLinkType(node),
-                GetLinkUrl(node));
+                linkType,
+                linkUrl);
         }
 
         /// <summary>
@@ -457,6 +460,35 @@ namespace Monoco.CMS.FieldTypes
         private object GetLinkType(XmlNode node)
         {
             return GetAttribute(node, "linktype");
+        }
+        /// <summary>
+        /// Get the content tree path of the item associated to a link node.
+        /// </summary>
+        /// <param name="node">A link node with a GUID in its 'id' attribute.</param>
+        /// <returns>Content tree path to the item with that GUID.</returns>
+        private object GetLinkPath(XmlNode node)
+        {
+            var id = GetAttribute(node, "id");
+            if (String.IsNullOrWhiteSpace(id))
+            {
+                return String.Empty;
+            }
+
+            Sitecore.Data.ID itemId;
+            if (!Sitecore.Data.ID.TryParse(id, out itemId))
+            {
+                return String.Empty;
+            }
+
+            var db = Sitecore.Context.ContentDatabase;
+            if (db == null)
+            {
+                return String.Empty;
+            }
+
+            var item = db.GetItem(itemId);
+
+            return (item == null) ? String.Empty : item.Paths.ContentPath;
         }
         /// <summary>
         /// Gets an attribute from the node.
