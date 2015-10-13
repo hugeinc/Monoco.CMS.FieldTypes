@@ -413,7 +413,7 @@ namespace Monoco.CMS.FieldTypes
         private string GetSelectText(XmlNode node)
         {
             var linkType = GetLinkType(node);
-            var linkUrl = (linkType != null && linkType.ToString() == "internal") ? GetLinkPath(node) : GetLinkUrl(node);
+            var linkUrl = (linkType != null && linkType.ToString() != "external") ? GetLinkPath(node, linkType.ToString()) : GetLinkUrl(node);
 
             return string.Format("{0} ({1}: {2})",
                 GetAttribute(node, "text"), 
@@ -466,7 +466,7 @@ namespace Monoco.CMS.FieldTypes
         /// </summary>
         /// <param name="node">A link node with a GUID in its 'id' attribute.</param>
         /// <returns>Content tree path to the item with that GUID.</returns>
-        private object GetLinkPath(XmlNode node)
+        private object GetLinkPath(XmlNode node, string linkType)
         {
             var id = GetAttribute(node, "id");
             if (String.IsNullOrWhiteSpace(id))
@@ -488,7 +488,7 @@ namespace Monoco.CMS.FieldTypes
 
             var item = db.GetItem(itemId);
 
-            return (item == null) ? String.Empty : item.Paths.ContentPath;
+            return (item == null) ? String.Empty : linkType == "media" ? item.Paths.MediaPath : item.Paths.ContentPath;
         }
         /// <summary>
         /// Gets an attribute from the node.
