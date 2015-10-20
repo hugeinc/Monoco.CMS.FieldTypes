@@ -416,7 +416,7 @@ namespace Monoco.CMS.FieldTypes
             var linkUrl = (linkType != null && linkType.ToString() != "external") ? GetLinkPath(node, linkType.ToString()) : GetLinkUrl(node);
 
             return string.Format("{0} ({1}: {2})",
-                GetAttribute(node, "text"), 
+                GetAttribute(node, "text"),
                 linkType,
                 linkUrl);
         }
@@ -508,7 +508,7 @@ namespace Monoco.CMS.FieldTypes
             {
                 result = defaultValue;
             }
-            return result;
+            return result.Replace("'", "&apos;"); 
         }
         /// <summary>
         /// Creates a new XmlDocument with nodes based on the field's value.

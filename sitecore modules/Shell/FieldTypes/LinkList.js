@@ -51,12 +51,12 @@ scContentEditor.prototype.linklistMoveDown = function (id) {
 };
 scContentEditor.prototype.updateLink = function (id, params) {
     var c = scForm.browser.getControl(id + '_List');
-    c.options[params.index].text = params.text;
+    c.options[params.index].text = params.text.replace("&apos;", "'");
 };
 
 scContentEditor.prototype.linklistUpdateLink = function (id, params) {
     var c = scForm.browser.getControl(id + '_List');
-    c.options[params.index].text = params.text;
+    c.options[params.index].text = params.text.replace("&apos;", "'");
 };
 scContentEditor.prototype.linklistInsertLink = function (id, params) {
     var c = scForm.browser.getControl(id + '_List');
